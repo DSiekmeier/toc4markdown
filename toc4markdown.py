@@ -17,8 +17,8 @@ import time
 __version__ = "1.0"
 
 # Information about required and used Python versions
-req_py_version = (3, 2)
-cur_py_version = sys.version_info
+REQ_PY_VERSION = (3, 2)
+CUR_PY_VERSION = sys.version_info
 
 
 def create_backup(src):
@@ -37,8 +37,8 @@ def read_file(cur_file, skip_leading):
 
     toc = list()
     data = list()
-    with open(cur_file, "r", encoding="utf-8") as f:
-        for line in f:
+    with open(cur_file, "r", encoding="utf-8") as input_file:
+        for line in input_file:
             current_line = line
             data.append(current_line)
             if skip_leading:
@@ -49,6 +49,8 @@ def read_file(cur_file, skip_leading):
 
 
 def modify_file(cur_file, toc, data):
+    """Prepend TOC to current file."""
+
     with open(cur_file, "w", encoding="utf-8") as modified:
         for row in toc:
             modified.write(row)
@@ -58,7 +60,8 @@ def modify_file(cur_file, toc, data):
 
 
 def create_arg_parser():
-    # Create the argument parser
+    """Create the argument parser."""
+
     parser = argparse.ArgumentParser(
         description="TOC creator for lightweight markup languages")
 
@@ -115,8 +118,7 @@ def main():
 if __name__ == "__main__":
 
     # Check for correct Python version
-    if cur_py_version >= req_py_version:
+    if CUR_PY_VERSION >= REQ_PY_VERSION:
         main()
     else:
         print("Your Python interpreter is too old. Please consider upgrading.")
-
