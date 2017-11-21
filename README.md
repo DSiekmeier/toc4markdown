@@ -28,11 +28,6 @@ can use the *-t* argument.
 
 Execute *toc4markdown.py --help* to get the full list of commandline arguments.
 
-## TODO
-
-1. Setext style tags
-2. Configuration of level depth for sub headers
-
 ## LICENCE
 These source codes are under Coffee-Ware licence: feel free to use this software
 "as-is", but buy me a coffee if we ever meet each other.
