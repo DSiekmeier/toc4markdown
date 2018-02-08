@@ -121,4 +121,6 @@ if __name__ == "__main__":
     if CUR_PY_VERSION >= REQ_PY_VERSION:
         main()
     else:
-        print("Your Python interpreter is too old. Please consider upgrading.")
+        print("Your Python interpreter is too old.")
+        print("Please consider upgrading to Python v{}.{} or above.").format(
+            REQ_PY_VERSION[0], REQ_PY_VERSION[1])
