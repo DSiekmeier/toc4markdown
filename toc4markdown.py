@@ -37,13 +37,16 @@ def read_file(cur_file, skip_leading):
 
     toc = list()
     data = list()
+    inCodeSection = False
     with open(cur_file, "r", encoding="utf-8") as input_file:
         for line in input_file:
             current_line = line
             data.append(current_line)
             if skip_leading:
                 current_line = line.lstrip()
-            if current_line.startswith("#"):
+            if current_line.startswith("```"):
+                inCodeSection = not inCodeSection
+            if current_line.startswith("#") and not inCodeSection:
                 toc.append(current_line)
     return toc, data
 
